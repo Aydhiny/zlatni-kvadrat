@@ -146,11 +146,12 @@ export function Header() {
           </nav>
 
           <div className="hidden md:flex items-center gap-3 shrink-0">
-            {isAuthenticated && (
-              <Link to="/admin" className="text-sm font-medium text-slate-600 hover:text-foreground transition-colors">
-                Admin
-              </Link>
-            )}
+            <Link
+              to={isAuthenticated ? '/admin' : '/login'}
+              className="text-sm font-medium text-slate-600 hover:text-foreground transition-colors"
+            >
+              {isAuthenticated ? 'Admin' : 'Admin Login'}
+            </Link>
 
             <Link
               to="/listings"
@@ -254,15 +255,13 @@ export function Header() {
                     </span>
                   </div>
                 )}
-                {isAuthenticated && (
-                  <Link
-                    to="/admin"
-                    className="block text-center py-2.5 text-sm text-muted"
-                    onClick={() => setMobileOpen(false)}
-                  >
-                    Admin Panel
-                  </Link>
-                )}
+                <Link
+                  to={isAuthenticated ? '/admin' : '/login'}
+                  className="block text-center py-2.5 text-sm text-muted"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  {isAuthenticated ? 'Admin Panel' : 'Admin Login'}
+                </Link>
                 <Link
                   to="/listings"
                   className="flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-semibold text-white btn-3d-primary"
