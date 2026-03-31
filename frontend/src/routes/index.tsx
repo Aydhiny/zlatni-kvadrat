@@ -176,7 +176,7 @@ function HomePage() {
   const [heroIndex, setHeroIndex] = useState(0)
 
   useEffect(() => {
-    const lenis = new Lenis({ duration: 1.1, smoothWheel: true, smoothTouch: false })
+    const lenis = new Lenis({ duration: 1.1, smoothWheel: true })
     let raf = 0
     const tick = (t: number) => { lenis.raf(t); raf = requestAnimationFrame(tick) }
     raf = requestAnimationFrame(tick)

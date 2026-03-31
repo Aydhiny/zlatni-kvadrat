@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { useState } from 'react'
 import { toast } from 'sonner'
-import { Plus, Pencil, Trash2 } from 'lucide-react'
+import { Pencil, Trash2 } from 'lucide-react'
 import { useListings, useDeleteListing } from '@/hooks/useListings'
 import { formatPrice } from '@/lib/utils'
 import { ConfirmModal } from '@/components/ui/ConfirmModal'

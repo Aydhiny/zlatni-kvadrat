@@ -1,14 +1,21 @@
 import { Link, useRouterState } from '@tanstack/react-router'
-import { LayoutDashboard, Home, Mail, LogOut, Globe, ChevronLeft, ChevronRight } from 'lucide-react'
+import { LayoutDashboard, Home, Mail, LogOut, Globe, ChevronLeft, ChevronRight, type LucideIcon } from 'lucide-react'
 import { useAuth } from '@/hooks/useAuth'
 import { useSidebarStore } from '@/store/sidebarStore'
 import { cn } from '@/lib/utils'
 
-const navItems = [
+type NavItem = {
+  to: '/admin' | '/admin/listings' | '/admin/inquiries'
+  icon: LucideIcon
+  label: string
+  exact?: boolean
+}
+
+const navItems: NavItem[] = [
   { to: '/admin', icon: LayoutDashboard, label: 'Dashboard', exact: true },
   { to: '/admin/listings', icon: Home, label: 'Listings' },
   { to: '/admin/inquiries', icon: Mail, label: 'Inquiries' },
-] as const
+]
 
 const BRAND = '#b5472a'
 const BG = '#0f172a'
@@ -58,7 +65,7 @@ export function AdminSidebar() {
       {/* Nav */}
       <nav className={cn('flex-1 py-4 space-y-0.5', collapsed ? 'px-2' : 'px-3')}>
         {navItems.map((item) => {
-          const isActive = item.exact
+          const isActive = item.exact === true
             ? pathname.replace(/\/$/, '') === item.to
             : pathname.startsWith(item.to) && !(item.to === '/admin' && pathname.length > 7)
 

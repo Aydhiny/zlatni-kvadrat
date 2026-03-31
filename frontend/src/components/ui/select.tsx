@@ -1,25 +1,21 @@
-﻿import * as React from 'react'
+import * as React from 'react'
 import * as SelectPrimitive from '@radix-ui/react-select'
 import { Check, ChevronDown, ChevronUp } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const Select = ({
   children,
-  modal = false,
   onOpenChange,
   ...props
 }: React.ComponentPropsWithoutRef<typeof SelectPrimitive.Root>) => (
   <SelectPrimitive.Root
-    modal={modal}
     onOpenChange={(open) => {
       onOpenChange?.(open)
-      if (!modal) {
-        requestAnimationFrame(() => {
-          document.documentElement.style.overflow = ''
-          document.body.style.overflow = ''
-          document.body.style.paddingRight = ''
-        })
-      }
+      requestAnimationFrame(() => {
+        document.documentElement.style.overflow = ''
+        document.body.style.overflow = ''
+        document.body.style.paddingRight = ''
+      })
     }}
     {...props}
   >

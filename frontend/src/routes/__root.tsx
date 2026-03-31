@@ -10,7 +10,7 @@ import { AdminTopBar } from '@/components/layout/AdminTopBar'
 import { AIChatbot } from '@/components/AIChatbot'
 import { useAuthStore } from '@/store/authStore'
 
-interface RouterContext {
+export interface RouterContext {
   queryClient: QueryClient
 }
 

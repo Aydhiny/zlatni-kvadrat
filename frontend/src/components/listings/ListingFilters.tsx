@@ -1,4 +1,4 @@
-ï»¿import type { ListingFilters } from '@/types'
+import type { ListingFilters } from '@/types'
 import { cn } from '@/lib/utils'
 import {
   Select,
@@ -31,7 +31,7 @@ export function ListingFilters({ filters, onChange }: ListingFiltersProps) {
       <div>
         <label className="block text-xs text-muted mb-1.5">Listing Type</label>
         <Select
-          modal={false}
+          
           value={filters.type ?? 'any'}
           onValueChange={(value) => update('type', value === 'any' ? undefined : (value as ListingFilters['type']))}
         >
@@ -48,7 +48,7 @@ export function ListingFilters({ filters, onChange }: ListingFiltersProps) {
       <div>
         <label className="block text-xs text-muted mb-1.5">Property Type</label>
         <Select
-          modal={false}
+          
           value={filters.property_type ?? 'any'}
           onValueChange={(value) => update('property_type', value === 'any' ? undefined : (value as ListingFilters['property_type']))}
         >
@@ -70,11 +70,11 @@ export function ListingFilters({ filters, onChange }: ListingFiltersProps) {
       </div>
       <div className="grid grid-cols-2 gap-2">
         <div>
-          <label className="block text-xs text-muted mb-1.5">Min Price (â‚¬)</label>
+          <label className="block text-xs text-muted mb-1.5">Min Price (€)</label>
           <input type="number" placeholder="0" value={filters.min_price ?? ''} onChange={(e) => update('min_price', e.target.value ? Number(e.target.value) : undefined)} className={inputClass} />
         </div>
         <div>
-          <label className="block text-xs text-muted mb-1.5">Max Price (â‚¬)</label>
+          <label className="block text-xs text-muted mb-1.5">Max Price (€)</label>
           <input type="number" placeholder="Any" value={filters.max_price ?? ''} onChange={(e) => update('max_price', e.target.value ? Number(e.target.value) : undefined)} className={inputClass} />
         </div>
       </div>

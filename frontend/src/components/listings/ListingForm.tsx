@@ -1,4 +1,4 @@
-﻿import { Controller, useForm } from 'react-hook-form'
+import { Controller, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import type { Listing } from '@/types'
@@ -82,7 +82,7 @@ export function ListingForm({ defaultValues, onSubmit, isSubmitting = false }: L
               control={control}
               name="type"
               render={({ field }) => (
-                <Select modal={false} value={field.value} onValueChange={field.onChange}>
+                <Select value={field.value} onValueChange={field.onChange}>
                   <SelectTrigger className={selectTriggerClass}>
                     <SelectValue />
                   </SelectTrigger>
@@ -100,7 +100,7 @@ export function ListingForm({ defaultValues, onSubmit, isSubmitting = false }: L
               control={control}
               name="property_type"
               render={({ field }) => (
-                <Select modal={false} value={field.value} onValueChange={field.onChange}>
+                <Select value={field.value} onValueChange={field.onChange}>
                   <SelectTrigger className={selectTriggerClass}>
                     <SelectValue />
                   </SelectTrigger>
@@ -131,7 +131,7 @@ export function ListingForm({ defaultValues, onSubmit, isSubmitting = false }: L
               control={control}
               name="currency"
               render={({ field }) => (
-                <Select modal={false} value={field.value ?? 'EUR'} onValueChange={field.onChange}>
+                <Select value={field.value ?? 'EUR'} onValueChange={field.onChange}>
                   <SelectTrigger className={selectTriggerClass}>
                     <SelectValue />
                   </SelectTrigger>
@@ -146,7 +146,7 @@ export function ListingForm({ defaultValues, onSubmit, isSubmitting = false }: L
           </div>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <div><label className={labelClass}>Area (m²)</label><input type="number" {...register('area')} className={fieldClass} placeholder="75" /></div>
+          <div><label className={labelClass}>Area (m�)</label><input type="number" {...register('area')} className={fieldClass} placeholder="75" /></div>
           <div><label className={labelClass}>Bedrooms</label><input type="number" {...register('bedrooms')} className={fieldClass} placeholder="2" /></div>
           <div><label className={labelClass}>Bathrooms</label><input type="number" {...register('bathrooms')} className={fieldClass} placeholder="1" /></div>
         </div>
