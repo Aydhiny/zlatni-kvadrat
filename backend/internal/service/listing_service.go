@@ -3,11 +3,13 @@ package service
 import (
 	"context"
 	"fmt"
+	"strings"
 
 	"github.com/rs/zerolog"
 	"github.com/zlatni-kvadrat/backend/internal/domain"
 	"github.com/zlatni-kvadrat/backend/internal/dto"
 	"github.com/zlatni-kvadrat/backend/internal/repository"
+	"github.com/lib/pq"
 )
 
 // ListingService defines operations for managing property listings.
@@ -67,19 +69,20 @@ func (s *listingService) GetByID(ctx context.Context, id string) (*domain.Listin
 // Create validates and persists a new listing.
 func (s *listingService) Create(ctx context.Context, req dto.CreateListingRequest) (*domain.Listing, error) {
 	listing := &domain.Listing{
-		Title:        req.Title,
-		Description:  req.Description,
-		Type:         domain.ListingType(req.Type),
-		PropertyType: domain.PropertyType(req.PropertyType),
+		Title:        strings.TrimSpace(req.Title),
+		Description:  strings.TrimSpace(req.Description),
+		Type:         domain.ListingType(strings.TrimSpace(req.Type)),
+		PropertyType: domain.PropertyType(strings.TrimSpace(req.PropertyType)),
 		Price:        req.Price,
-		Currency:     req.Currency,
+		Currency:     strings.ToUpper(strings.TrimSpace(req.Currency)),
 		Area:         req.Area,
 		Bedrooms:     req.Bedrooms,
 		Bathrooms:    req.Bathrooms,
-		Location:     req.Location,
-		Address:      req.Address,
+		Location:     strings.TrimSpace(req.Location),
+		Address:      strings.TrimSpace(req.Address),
 		Latitude:     req.Latitude,
 		Longitude:    req.Longitude,
+		Images:       pq.StringArray{},
 		IsFeatured:   req.IsFeatured,
 		IsAvailable:  true,
 	}

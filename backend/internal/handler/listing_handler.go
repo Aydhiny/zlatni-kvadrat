@@ -71,6 +71,13 @@ func (h *ListingHandler) Create(c *fiber.Ctx) error {
 
 	listing, err := h.listingService.Create(c.Context(), req)
 	if err != nil {
+		h.log.Error().
+			Err(err).
+			Str("title", req.Title).
+			Str("type", req.Type).
+			Str("property_type", req.PropertyType).
+			Str("currency", req.Currency).
+			Msg("failed to create listing")
 		return response.InternalError(c, "failed to create listing")
 	}
 
