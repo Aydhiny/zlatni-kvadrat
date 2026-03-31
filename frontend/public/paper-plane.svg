@@ -1,0 +1,16 @@
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Paper plane">
+  <defs>
+    <linearGradient id="planeBody" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#dfe6ee" />
+    </linearGradient>
+    <linearGradient id="planeFold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#c7d1dd" />
+      <stop offset="100%" stop-color="#b4c0cf" />
+    </linearGradient>
+  </defs>
+  <path d="M9 59.5L120 9L84 119L63.5 72L9 59.5Z" fill="url(#planeBody)" stroke="#96a7ba" stroke-width="4" stroke-linejoin="round" />
+  <path d="M9 59.5L120 9L63.5 72L9 59.5Z" fill="#f4f7fb" stroke="#aab7c7" stroke-width="3" stroke-linejoin="round" />
+  <path d="M63.5 72L84 119L72 66L63.5 72Z" fill="url(#planeFold)" />
+  <path d="M38 58L74 38" stroke="#9caec1" stroke-width="3" stroke-linecap="round" />
+</svg>

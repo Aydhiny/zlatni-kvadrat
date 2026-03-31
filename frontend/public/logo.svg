@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#c85232"/>
+      <stop offset="100%" stop-color="#7a2a14"/>
+    </linearGradient>
+  </defs>
+  <!-- Background square -->
+  <rect width="40" height="40" rx="9" fill="url(#bg)"/>
+  <!-- Subtle inner frame — references the "kvadrat" (square) concept -->
+  <rect x="5.5" y="5.5" width="29" height="29" rx="5" stroke="rgba(255,255,255,0.18)" stroke-width="1" fill="none"/>
+  <!-- Z letterform -->
+  <path d="M10.5 12.5 H19.5 L10.5 27.5 H19.5" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <!-- K letterform -->
+  <line x1="22.5" y1="12.5" x2="22.5" y2="27.5" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+  <line x1="22.5" y1="20" x2="29.5" y2="12.5" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+  <line x1="22.5" y1="20" x2="29.5" y2="27.5" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+</svg>

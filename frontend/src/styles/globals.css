@@ -1,0 +1,165 @@
+@import "tailwindcss";
+
+/*
+  Tailwind v4 requires @theme to generate utility classes from CSS tokens.
+  Variables here become: bg-*, text-*, border-*, shadow-* utility classes.
+*/
+@theme {
+  /*
+    Brand accent: deep Adriatic terracotta-copper.
+    This reads as premium and culturally specific to the Balkan/Mediterranean
+    market — distinct from the generic gold used by most property sites.
+    It pairs with warm cream backgrounds and dark navy for high contrast.
+  */
+  --color-gold:         #b5472a;
+  --color-gold-dark:    #943b22;
+  --color-gold-light:   #e8c4b8;
+
+  /* Neutrals — warm off-white base, not cold grey */
+  --color-background:   #f8f5f0;
+  --color-foreground:   #1c1410;
+  --color-card:         #ffffff;
+  --color-card-foreground: #1c1410;
+
+  /* Muted — separate text vs bg tokens to avoid the invisible-text trap */
+  --color-muted:        #6b7280;
+  --color-muted-bg:     #f3ede4;
+
+  /* Borders / inputs */
+  --color-border:       #e2d9cc;
+  --color-input:        #e2d9cc;
+  --color-ring:         #b5472a;
+
+  /* Semantic */
+  --color-primary:      #b5472a;
+  --color-primary-foreground: #ffffff;
+  --color-secondary:    #f3ede4;
+  --color-secondary-foreground: #1c1410;
+  --color-destructive:  #d65549;
+  --color-destructive-foreground: #ffffff;
+  --color-accent:       #b5472a;
+  --color-accent-foreground: #ffffff;
+
+  /* Sidebar */
+  --color-navy:         #0f172a;
+
+  /* Shadows */
+  --shadow-card:       0 1px 3px 0 rgb(0 0 0 / 0.06), 0 1px 2px -1px rgb(0 0 0 / 0.04);
+  --shadow-card-hover: 0 8px 24px 0 rgb(0 0 0 / 0.10), 0 2px 6px -1px rgb(0 0 0 / 0.06);
+  --shadow-elevated:   0 4px 12px 0 rgb(0 0 0 / 0.08), 0 2px 4px -1px rgb(0 0 0 / 0.06);
+  --shadow-modal:      0 20px 60px 0 rgb(0 0 0 / 0.18);
+
+  /* Border radius */
+  --radius: 0.75rem;
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  * {
+    border-color: var(--color-border);
+  }
+
+  html,
+  body,
+  #root {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  /*
+    Force scrollbar to always be visible on html.
+    This prevents Radix UI from needing to add padding-right compensation when
+    it opens a Select/Dialog (Radix adds padding equal to scrollbar width to
+    prevent layout shift — but if the scrollbar is always there, there's no
+    shift to compensate for).
+  */
+  html {
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+
+  body {
+    margin: 0;
+    overflow-x: hidden;
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: 'Geist', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Prevent Radix scroll-lock padding from shifting layout */
+  html[data-scroll-locked],
+  body[data-scroll-locked],
+  body[style*="padding-right"] {
+    padding-right: 0 !important;
+  }
+
+  h1, h2, h3 {
+    letter-spacing: -0.03em;
+  }
+}
+
+/* Keyframe for the infinite scrolling marquee ticker */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@layer utilities {
+  .font-serif {
+    font-family: 'DM Serif Display', Georgia, serif;
+  }
+
+  .font-cormorant {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+  }
+
+  .animate-marquee {
+    animation: marquee 40s linear infinite;
+  }
+
+  .animate-marquee:hover {
+    animation-play-state: paused;
+  }
+
+  /* 3D elevated button — primary */
+  .btn-3d-primary {
+    background: linear-gradient(180deg, #c85232 0%, #8f311d 100%);
+    border-top: 1px solid rgba(255,255,255,0.18);
+    border-bottom: 1px solid rgba(0,0,0,0.22);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.18), 0 3px 10px rgba(181,71,42,0.25), inset 0 1px 0 rgba(255,255,255,0.12);
+    transition: box-shadow 0.15s ease, transform 0.1s ease;
+  }
+  .btn-3d-primary:hover {
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2), 0 6px 18px rgba(181,71,42,0.3), inset 0 1px 0 rgba(255,255,255,0.12);
+    transform: translateY(-1px);
+  }
+  .btn-3d-primary:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.08);
+  }
+
+  /* 3D elevated button — outline/secondary */
+  .btn-3d-outline {
+    background: linear-gradient(180deg, #ffffff 0%, #f3ede4 100%);
+    border: 1px solid #d4cab8;
+    border-top-color: rgba(255,255,255,0.9);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+    transition: box-shadow 0.15s ease, transform 0.1s ease;
+  }
+  .btn-3d-outline:hover {
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.08);
+    transform: translateY(-1px);
+  }
+  .btn-3d-outline:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+  }
+}

@@ -1,0 +1,59 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: zlatni_kvadrat_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: zlatni_kvadrat
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    container_name: zlatni_kvadrat_api
+    environment:
+      DATABASE_URL: postgres://postgres:postgres@postgres:5432/zlatni_kvadrat?sslmode=disable
+      JWT_SECRET: dev_jwt_secret_change_in_production_min32chars
+      JWT_REFRESH_SECRET: dev_refresh_secret_change_in_production_min32chars
+      PORT: 8080
+      ENV: development
+      CLOUDINARY_URL: ""
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./backend:/app
+    depends_on:
+      postgres:
+        condition: service_healthy
+    command: air
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    container_name: zlatni_kvadrat_frontend
+    environment:
+      VITE_API_URL: http://localhost:8080/api/v1
+      VITE_APP_NAME: Zlatni Kvadrat
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:

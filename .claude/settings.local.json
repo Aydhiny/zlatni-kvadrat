@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(migrate --version)",
+      "Bash(go version:*)",
+      "Bash(psql --version)",
+      "Bash(docker --version)",
+      "Bash(psql \"postgresql://neondb_owner:npg_diRAG1o9qSWU@ep-square-sunset-amut31n8-pooler.c-5.us-east-1.aws.neon.tech/neondb?sslmode=require\" -c \"SELECT version\\(\\);\")",
+      "Bash(psql \"postgresql://neondb_owner:npg_diRAG1o9qSWU@ep-square-sunset-amut31n8-pooler.c-5.us-east-1.aws.neon.tech/neondb?sslmode=require\" -f \"C:\\\\User\\\\Programming\\\\zlatni-kvadrat\\\\backend\\\\internal\\\\database\\\\migrations\\\\000001_create_users.up.sql\")",
+      "Bash(psql \"postgresql://neondb_owner:npg_diRAG1o9qSWU@ep-square-sunset-amut31n8-pooler.c-5.us-east-1.aws.neon.tech/neondb?sslmode=require\" -f \"C:\\\\User\\\\Programming\\\\zlatni-kvadrat\\\\backend\\\\internal\\\\database\\\\migrations\\\\000002_create_listings.up.sql\")",
+      "Bash(psql \"postgresql://neondb_owner:npg_diRAG1o9qSWU@ep-square-sunset-amut31n8-pooler.c-5.us-east-1.aws.neon.tech/neondb?sslmode=require\" -f \"C:\\\\User\\\\Programming\\\\zlatni-kvadrat\\\\backend\\\\internal\\\\database\\\\migrations\\\\000003_create_inquiries.up.sql\")",
+      "Bash(psql \"postgresql://neondb_owner:npg_diRAG1o9qSWU@ep-square-sunset-amut31n8-pooler.c-5.us-east-1.aws.neon.tech/neondb?sslmode=require\" -c \"\\\\dt\")",
+      "Bash(psql \"postgresql://neondb_owner:npg_diRAG1o9qSWU@ep-square-sunset-amut31n8-pooler.c-5.us-east-1.aws.neon.tech/neondb?sslmode=require\" -c \":*)",
+      "Bash(curl -s http://localhost:8080/health)",
+      "Bash(curl -s \"http://localhost:8080/api/v1/listings\")",
+      "Bash(node backend/cmd/seed/seed-listings.js)",
+      "Bash(go build:*)",
+      "Bash(cmd /c \"where go 2>nul && go build ./... 2>&1\")",
+      "Bash(cmd /c \"cd C:\\\\User\\\\Programming\\\\zlatni-kvadrat\\\\backend && go build ./... 2>&1\")",
+      "Bash(cmd /c \"cd /d C:\\\\User\\\\Programming\\\\zlatni-kvadrat\\\\backend && go build ./... && echo BUILD_SUCCESS || echo BUILD_FAILED\")",
+      "Bash(powershell -Command \"Set-Location ''C:\\\\User\\\\Programming\\\\zlatni-kvadrat\\\\backend''; $result = & go build ./... 2>&1; if \\($LASTEXITCODE -eq 0\\) { ''BUILD_SUCCESS'' } else { $result }\")",
+      "Bash(powershell -Command \"cd ''C:\\\\User\\\\Programming\\\\zlatni-kvadrat\\\\backend''; go build ./... ; if \\($LASTEXITCODE -eq 0\\) { Write-Host ''BUILD_SUCCESS'' } else { Write-Host ''BUILD_FAILED'' }\")",
+      "Read(//c//**)",
+      "Bash(\"/c/Program Files/Go/bin/go\" build ./...)",
+      "Bash(curl -s \"http://localhost:8080/api/v1/listings/featured\")"
+    ]
+  }
+}
